@@ -121,4 +121,29 @@ public class ApplicationTest {
         human4.put("age", -5);
         assertThat(actual.isValid(human4)).isEqualTo(false);
     }
+
+    @Test
+    public void testShapeMapSchema2() {
+        MapSchema actual = validator.map();
+        Map<String, BaseSchema> schemas = new HashMap<>();
+        schemas.put("digits", validator.number().required());
+        schemas.put("map", validator.map().sizeof(2));
+
+        actual.shape(schemas);
+        Map<String, Object> map1 = new HashMap<>();
+        map1.put("digits", null);
+        map1.put("map", new HashMap<>());
+        assertThat(actual.isValid(map1)).isEqualTo(false);
+
+        Map<String, Object> map2 = new HashMap<>();
+        Map<Object, Object> testmap = new HashMap<>();
+        testmap.put(4, 4);
+        testmap.put(5, 5);
+        map2.put("digits", 4);
+        map2.put("map", testmap);
+        assertThat(actual.isValid(map2)).isEqualTo(true);
+        testmap.put(6, 6);
+        assertThat(actual.isValid(map2)).isEqualTo(false);
+
+    }
 }
