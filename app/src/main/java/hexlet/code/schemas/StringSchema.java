@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 
 import java.util.Objects;
 
-public class StringSchema extends BaseSchema {
+public final class StringSchema extends BaseSchema {
 
     public StringSchema minLength(int minLength) {
         super.addRule("minLength", t ->
