@@ -1,5 +1,5 @@
 plugins {
-    id("application")
+    id("java")
     id("jacoco")
     id("checkstyle")
 }
@@ -11,23 +11,8 @@ repositories {
     mavenCentral()
 }
 
-
-compileJava {
-    options.release = 20
+tasks.jacocoTestReport { reports { xml.required.set(true) }
 }
-
-jacocoTestReport {
-    reports {
-        xml.required = false
-        csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
-    }
-}
-jacoco {
-    toolVersion = "0.8.11"
-    reportsDirectory = layout.buildDirectory.dir('app/jacocoreport')
-}
-
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))

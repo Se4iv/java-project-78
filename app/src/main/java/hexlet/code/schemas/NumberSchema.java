@@ -4,14 +4,18 @@ import java.util.Objects;
 
 public final class NumberSchema extends BaseSchema {
 
+    public NumberSchema() {
+        addRule("instanceof", t -> t instanceof Integer || Objects.isNull(t));
+    }
+
     public NumberSchema range(int from, int to) {
         addRule("range",
-                x -> Objects.isNull(x) || (((Integer) x) >= from && ((Integer) x) <= to));
+                t -> Objects.isNull(t) || (((Integer) t) >= from && ((Integer) t) <= to));
         return this;
     }
 
     public NumberSchema positive() {
-        addRule("positive", x -> Objects.isNull(x) || ((Integer) x) > 0);
+        addRule("positive", t -> Objects.isNull(t) || ((Integer) t) > 0);
         return this;
     }
 
@@ -22,9 +26,6 @@ public final class NumberSchema extends BaseSchema {
 
     @Override
     public boolean isValid(Object o) {
-        if (!(o instanceof Integer) && !(Objects.isNull(o))) {
-            return false;
-        }
         return super.isValid(o);
     }
 

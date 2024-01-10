@@ -5,6 +5,10 @@ import java.util.Objects;
 
 public final class StringSchema extends BaseSchema {
 
+    public StringSchema() {
+        addRule("instanceof", t -> t instanceof String || Objects.isNull(t));
+    }
+
     public StringSchema minLength(int minLength) {
         super.addRule("minLength", t ->
                 Objects.isNull(t) || ((String) t).length() >= minLength);
@@ -24,9 +28,6 @@ public final class StringSchema extends BaseSchema {
 
     @Override
     public boolean isValid(Object o) {
-        if (!(o instanceof String) && !(Objects.isNull(o))) {
-            return false;
-        }
         return super.isValid(o);
     }
 }

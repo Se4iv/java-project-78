@@ -1,9 +1,11 @@
 #Makefile
 build:
-	@gradle clean build installDist
+	./gradlew clean build
 test:
-	@gradle test
+	./gradlew test
 lint:
-	@gradle checkstyleMain
+	./gradlew checkstyleMain checkstyleTest
+report:
+	./gradlew jacocoTestReport
 
 .PHONY: build
