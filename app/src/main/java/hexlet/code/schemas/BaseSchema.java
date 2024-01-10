@@ -1,12 +1,12 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema {
-    protected Map<String, Predicate<Object>> rules = new HashMap<>();
+    protected Map<String, Predicate<Object>> rules = new TreeMap<>();
 
     /**
      * Add rules to map of rules.

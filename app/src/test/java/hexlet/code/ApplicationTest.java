@@ -51,6 +51,7 @@ public class ApplicationTest {
         NumberSchema actual = validator.number();
         assertThat(actual.isValid(null)).isEqualTo(true);
         assertThat(actual.isValid("")).isEqualTo(false);
+        assertThat(actual.isValid("test")).isEqualTo(false);
 
         actual.required();
         assertThat(actual.isValid(null)).isEqualTo(false);
