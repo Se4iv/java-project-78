@@ -23,10 +23,4 @@ public final class NumberSchema extends BaseSchema {
         super.required();
         return this;
     }
-
-    @Override
-    public boolean isValid(Object o) {
-        return super.isValid(o);
-    }
-
 }

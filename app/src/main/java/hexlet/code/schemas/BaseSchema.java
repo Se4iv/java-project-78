@@ -31,7 +31,7 @@ public abstract class BaseSchema {
      * @param object
      * @return boolean
      */
-    protected boolean isValid(Object object) {
+    public boolean isValid(Object object) {
         return rules.values().stream().allMatch(x -> x.test(object));
     }
 }

@@ -9,3 +9,12 @@
 
 #Java CI
 [![Actions Status](https://github.com/Se4iv/java-project-78/actions/workflows/main.yml/badge.svg)](https://github.com/Se4iv/java-project-78/actions)
+
+Project Validator.
+This project is defigned to validate data basing on rules that should be determined first.
+It can validate Strings, Integers and Maps.
+First goes the scheme creation, then setting rules and finally validating data.
+Use methods in class Validator to make new scheme for your data(string, number, map).
+After that set rules according to choosen scheme. Rules are individual for each scheme. You can rewrite rule with new parameters
+if necessary.
+Use method isValid to check your data.
